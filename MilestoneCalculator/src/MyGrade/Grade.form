@@ -154,6 +154,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMS1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMS1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMS2">
         </Component>

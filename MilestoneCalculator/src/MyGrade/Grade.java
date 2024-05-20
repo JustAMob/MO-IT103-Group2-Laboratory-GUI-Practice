@@ -52,6 +52,12 @@ public class Grade extends javax.swing.JFrame {
 
         jLabelGrade.setText("Grade");
 
+        jTextFieldMS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMS1ActionPerformed(evt);
+            }
+        });
+
         jTextFieldGrade.setEditable(false);
         jTextFieldGrade.setToolTipText("");
 
@@ -181,25 +187,23 @@ public class Grade extends javax.swing.JFrame {
             double MS1 = Double.parseDouble(jTextFieldMS1.getText());
             double MS2 = Double.parseDouble(jTextFieldMS2.getText());
             double TA = Double.parseDouble(jTextFieldTA.getText());
-
+            
+            if (MS1>25 || MS2>40 || TA>35){
+                jTextFieldGrade.setText(String.valueOf(""));
+                JOptionPane.showMessageDialog(null, "MS1 can't go over 25 | MS2 can't go over 40 | TA can't go over 35");
+            }
+      
             double Grade = MS1 + MS2 + TA;
             double FinalGrade = Grade / 100 * 100;
             jTextFieldGrade.setText(String.valueOf(FinalGrade + "%"));
             
-            if(FinalGrade < 0){
-                
+            if(FinalGrade < 0 && FinalGrade > 100){  
             jTextFieldGrade.setText(String.valueOf(""));
-            JOptionPane.showMessageDialog(null, "HOW DID YA GET A NEGATIVE SCORE??? ");
+            JOptionPane.showMessageDialog(null, "Final Grade is out of bounds");
             
             }
             
-            if(FinalGrade >100){
-                
-            jTextFieldGrade.setText(String.valueOf(""));
-            JOptionPane.showMessageDialog(null, "Wow.... Speechless");
-            
-            
-            }
+           
 
         }
         catch(Exception ex)
@@ -211,6 +215,10 @@ public class Grade extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButtonResultActionPerformed
+
+    private void jTextFieldMS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMS1ActionPerformed
 
     /**
      * @param args the command line arguments
